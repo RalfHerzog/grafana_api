@@ -95,3 +95,23 @@ class Datasource(Base):
         delete_datasource = "/datasources/name/%s" % datasource_name
         r = self.api.DELETE(delete_datasource)
         return r
+
+    def query_range(self, datasource_id, query, start, end, step, datasource_access='proxy'):
+        """
+
+        :param datasource_access:
+        :param datasource_id:
+        :param query:
+        :param start:
+        :param end:
+        :param step:
+        :return:
+        """
+        post_query_range_path = "/datasources/%s/%s/api/v1/query_range" % (datasource_access, datasource_id)
+        r = self.api.POST(post_query_range_path, data={
+            'query': query,
+            'start': start,
+            'end': end,
+            'step': step
+        })
+        return r
