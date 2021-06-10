@@ -98,6 +98,10 @@ Work on API implementation still in progress.
 | Teams | + |
 | User | + |
 
+## Build for publishing
+
+    python3 setup.py sdist
+
 ## Issue tracker
 
 Please report any bugs and enhancement ideas using the `grafana_api` issue tracker:
