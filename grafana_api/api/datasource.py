@@ -99,12 +99,12 @@ class Datasource(Base):
     def query_range(self, datasource_id, query, start, end, step, datasource_access='proxy'):
         """
 
-        :param datasource_access:
         :param datasource_id:
         :param query:
         :param start:
         :param end:
         :param step:
+        :param datasource_access:
         :return:
         """
         post_query_range_path = "/datasources/%s/%s/api/v1/query_range" % (datasource_access, datasource_id)
@@ -113,5 +113,24 @@ class Datasource(Base):
             'start': start,
             'end': end,
             'step': step
+        })
+        return r
+
+
+    def series(self, datasource_id, match, start, end, datasource_access='proxy'):
+        """
+
+        :param datasource_id:
+        :param match:
+        :param start:
+        :param end:
+        :param datasource_access:
+        :return:
+        """
+        post_query_range_path = "/datasources/%s/%s/api/v1/series" % (datasource_access, datasource_id)
+        r = self.api.POST(post_query_range_path, data={
+            'match[]': match,
+            'start': start,
+            'end': end
         })
         return r
